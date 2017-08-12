@@ -1,0 +1,33 @@
+<div>
+  <form #formRef="ngForm" (ngSubmit)="submit(formRef.value)">
+    <fieldset ngModelGroup="login">
+      <input 
+        name="username"
+        [(ngModel)]="username" 
+        #usernameRef = "ngModel"
+        required
+        minlength="3"
+        placeholder="请输入用户名"
+        type="test"/>
+      <div *ngIf="usernameRef.errors?.required">this is required</div>
+        <div *ngIf="usernameRef.errors?.minlength">should be at least 3 charactors</div>
+        <div *ngIf="auth?.hasError">{{auth.errMsg}}</div>
+      <input
+        name="password"
+        [(ngModel)]="password"
+        #passwordRef = "ngModel"
+        required
+        placeholder="请输入密码"
+        type="password"/>
+      <div *ngIf="passwordRef.errors?.required">this is required</div>
+      <button type="submit">submit</button>
+    </fieldset>
+  </form>
+</div>
+<!--<textarea name="editor1"></textarea>-->
+<!--<textarea name="editor2" id="targetId" rows="rows" cols="cols">
+         This is my CKEditor component.
+     </textarea>-->
+<!--<app-ckeditor [targetId]="'editor3'" [object]="object"  (getElement)="getElement($event)" ></app-ckeditor>-->
+<!--<app-ckeditor [targetId]="'editor2'" ></app-ckeditor>-->
+<!--<app-ckeditor [targetId]="'editor2'" [object]="object"  (getElement)="getElement($event)" ></app-ckeditor>-->
